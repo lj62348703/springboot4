@@ -1,0 +1,104 @@
+<html class="no-js" lang="en-us"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mayabi - Multipurpose Portfolio/Business HTML5 Template</title>
+    <meta name="keywords" content="Corporate Business Shopse HTML5 Css3 Template" />
+    <meta name="description" content="mayabi | Minimal Multipurpose HTML5 Template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- css here -->
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/slicknav.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/linebar.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/scrolltop.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/slick-theme.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+</head>
+
+<body>
+<!-- header area end -->
+<!-- breadcroumb area end -->
+<!-- cart area start -->
+<div class="register-login-area sec-p-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mayabi-register-area">
+                            <div class="cart-title mb-20">
+                                <h2>登陆</h2>
+                            </div>
+                            <form action="login.action" method="post" class="registration-form">
+                                <div class="single-field mb-30">
+                                    <input class="form-control" type="text" placeholder="请输入姓名" name="username"  required>
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+                                <div class="single-field mb-30">
+                                    <input class="form-control" type="password" placeholder="输入密码" name="password" required>
+                                    <span><i class="fa fa-unlock-alt"></i></span>
+                                </div>
+
+                                <div class="single-field mb-30">
+                                    <input class="form-control" type="text" placeholder="输入验证码" name="imageCode" required>
+                                    <span class="input-group-addon" style="padding:0px 0px;">
+                                   			<img id="image" title="点击刷新验证码" style="cursor: pointer;"
+                                                  height="55px" src="image.action">
+                                   		</span>
+                                    <script src="js/jquery.min.js"></script>
+                                    <script>
+                                        $("#image").click(function(){
+                                            $("#image").attr("src","image.action?t="+Math.random());
+                                        });
+                                    </script>
+                                </div>
+                                <button class="btn btn-type-3">登录</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- cart area end -->
+
+<!-- js here -->
+<script th:src="@{/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+<script th:src="@{/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script th:src="@{/assets/js/popper.min.js}"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/js/jquery-ui.js}"></script>
+<script th:src="@{/assets/js/slicknav.min.js}"></script>
+<script th:src="@{/assets/js/owl.carousel.min.js}"></script>
+<script th:src="@{/assets/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/assets/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/assets/js/magnific-popup.min.js}"></script>
+<script th:src="@{/assets/js/linebar.js}"></script>
+<script th:src="@{/assets/js/waypoints.min.js}"></script>
+<script th:src="@{/assets/js/counterup.min.js}"></script>
+<script th:src="@{/assets/js/nice-select.min.js}"></script>
+<script th:src="@{/assets/js/scrolltop.js}"></script>
+<script th:src="@{/assets/js/ajax-form.js}"></script>
+<script th:src="@{/assets/js/wow.min.js}"></script>
+<script th:src="@{/assets/js/plugins.js}"></script>
+<script th:src="@{/assets/js/slick.min.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+
+</html>
