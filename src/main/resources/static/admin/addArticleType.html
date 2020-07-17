@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户管理</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+</head>
+<body>
+	<ul class="layui-nav layui-nav-tree  layui-nav-side" lay-filter="test">
+		<li class="layui-nav-item"><a href="/admin/user.html">用户管理</a></li>
+		<li class="layui-nav-item"><a href="/admin/addUser.html">添加用户</a></li>
+		<li class="layui-nav-item"><a href="/admin/articleType.html">文章类型管理</a></li>
+		<li class="layui-nav-item layui-this"><a href="/admin/addArticleType.html">添加文章类型</a></li>
+		<li class="layui-nav-item"><a href="/admin/article.html">文章管理</a></li>
+		<li class="layui-nav-item"><a href="/admin/addArticle.html">添加文章</a></li>
+		<li class="layui-nav-item"><a href="/admin/log.html">用户登陆日志</a></li>
+		<li class="layui-nav-item"><a href="/admin/sys.html">系统维护</a></li>
+	</ul>
+
+	<div class="contaiter" style="margin-left: 200px;">
+		<form id="frm" class="layui-form" action="" >
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章类型名字</label>
+				<div class="layui-input-block">
+					<input type="text" name="article_type_name" id="article_type_name" required lay-verify="required|username"
+						placeholder="请输入用户名"  autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章类型上级id</label>
+				<div class="layui-input-inline">
+					 <select name="article_type_upid"  lay-verify="required" id="upSelect">
+				        <option value="0">无</option>
+				      </select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		layui.use(['form'], function(){
+			var form = layui.form;
+			//自定义验证规则
+			  form.verify({
+			    username: [
+			      /^[\S]{3,12}$/
+			      ,'用户名必须3到12位，且不能出现空格'
+			    ]
+			  	,password: [
+			      /^[\S]{6,18}$/
+			      ,'密码必须6到18位，且不能出现空格'
+			    ]
+			  	,nick: [
+					/^[\S]{3,12}$/
+					,'昵称必须3到12位，且不能出现空格'
+			    ]
+			  });
+			
+			//监听提交
+			  form.on('submit(demo1)', function(data){
+				 var article_type_name = $("#article_type_name").val();
+				 var article_type_upid = $("#upSelect").val();
+			    $.post("/admin/addArticleType.action",
+			    		{"article_type_name":article_type_name,"article_type_upid":article_type_upid}
+			    	,function(result){
+			    		if(result.code != 0){
+			    			layer.msg(result.msg);
+			    		}else{
+			    			location.href = "/admin/articleType.html"
+			    		}
+			    	});
+			    return false;
+			  });
+			
+			  $.post("/admin/findAllArticleType.action", function(result) {
+					 $(result.list).each(function(){
+						 var option = $("<option value='"+this.article_type_id+"'>"+this.article_type_name+"</option>");
+					 	$("#upSelect").append(option);
+					 	form.render();
+					 });
+				})
+		});
+	</script>
+</body>
+</html>

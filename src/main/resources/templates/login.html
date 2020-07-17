@@ -41,16 +41,19 @@
                         <div class="mayabi-register-area">
                             <div class="cart-title mb-20">
                                 <h2>登陆</h2>
+                                <h6 th:text="${msg}"></h6>
                             </div>
                             <form action="login.action" method="post" class="registration-form">
                                 <div class="single-field mb-30">
-                                    <input class="form-control" type="text" placeholder="请输入姓名" name="username"  required>
+                                    <input class="form-control" type="text" placeholder="请输入姓名" name="user_name"  required>
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
+                                <span style="color: red;" th:text="${user_nameError}"></span>
                                 <div class="single-field mb-30">
-                                    <input class="form-control" type="password" placeholder="输入密码" name="password" required>
+                                    <input class="form-control" type="password" placeholder="输入密码" name="user_pwd" required>
                                     <span><i class="fa fa-unlock-alt"></i></span>
                                 </div>
+                                <span style="color: red;" th:text="${user_pwdError}"></span>
 
                                 <div class="single-field mb-30">
                                     <input class="form-control" type="text" placeholder="输入验证码" name="imageCode" required>

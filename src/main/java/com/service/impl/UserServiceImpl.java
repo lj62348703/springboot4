@@ -31,4 +31,21 @@ public class UserServiceImpl implements IUserService {
         PageInfo<Userinfo> page = new PageInfo<Userinfo>(list);
         return page;
     }
+
+    public Userinfo login(String user_name){
+        return userMapper.login(user_name);
+    }
+
+
+    public int deleteUser(Integer user_id){
+        return user_id == null ? 0 : userMapper.deleteUser(user_id);
+    }
+
+    public Userinfo findById(Integer user_id){
+        return user_id == null ? null : userMapper.findById(user_id);
+    }
+
+    public int update(Userinfo userinfo){
+        return userMapper.update(userinfo);
+    }
 }

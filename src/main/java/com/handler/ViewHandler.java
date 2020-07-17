@@ -10,4 +10,10 @@ public class ViewHandler {
     public String loginHtml(){
         return "login";
     }
+
+    @GetMapping("/index.html")
+    public String indexHtml(){
+        return "index";
+    }
+
 }

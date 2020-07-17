@@ -1,7 +1,10 @@
 package com.mapper;
 
 import com.entity.Userinfo;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +17,17 @@ public interface UserMapper {
 
 
     List<Userinfo> findUserLikeName(String user_name);
+
+    @Select("select * from userinfo where user_name = #{0}")
+    Userinfo login(String user_name);
+
+    // #{} preparedStatement预处理 ${}  Statement字符串拼接 有安全隐藏（sql注入攻击）
+    @Delete("delete from userinfo where user_id = #{0}")
+    int deleteUser(Integer user_id);
+
+    @Select("select * from userinfo where user_id = #{0}")
+    Userinfo findById(Integer user_id);
+
+    @Update("update userinfo set user_name=#{user_name},user_nick=#{user_nick},user_pwd=#{user_pwd} where user_id=#{user_id} ")
+    int update(Userinfo userinfo);
 }

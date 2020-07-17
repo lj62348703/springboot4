@@ -13,9 +13,9 @@ public class Userinfo implements Serializable {
     @Pattern(message = "用户名必须是3-12位",regexp = "^.{3,12}$", groups = {LoginValidate.class})
     private String user_name;
 
-    @NotNull(message = "昵称不能为空", groups = {LoginValidate.class})
-    @NotEmpty(message = "昵称不能为空", groups = {LoginValidate.class})
-    @Pattern(message = "昵称必须是3-12位",regexp = "^.{3,12}$", groups = {LoginValidate.class})
+    @NotNull(message = "昵称不能为空", groups = {RegValidate.class})
+    @NotEmpty(message = "昵称不能为空", groups = {RegValidate.class})
+    @Pattern(message = "昵称必须是3-12位",regexp = "^.{3,12}$", groups = {RegValidate.class})
     private String user_nick;
 
     @NotNull(message = "密码不能为空", groups = {LoginValidate.class})

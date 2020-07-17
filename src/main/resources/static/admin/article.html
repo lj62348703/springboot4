@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文章管理</title>
+	<link rel="stylesheet" href="/layui/css/layui.css">
+	<script type="text/javascript" src="/layui/layui.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/vue.min.js"></script>
+</head>
+<body>
+	<ul class="layui-nav layui-nav-tree  layui-nav-side" lay-filter="test">
+	  <li class="layui-nav-item"><a href="/admin/user.html">用户管理</a></li>
+	  <li class="layui-nav-item"><a href="/admin/addUser.html">添加用户</a></li>
+	  <li class="layui-nav-item"><a href="/admin/articleType.html">文章类型管理</a></li>
+	  <li class="layui-nav-item"><a href="/admin/addArticleType.html">添加文章类型</a></li>
+	  <li class="layui-nav-item layui-this"><a href="/admin/article.html">文章管理</a></li>
+	  <li class="layui-nav-item"><a href="/admin/addArticle.html">添加文章</a></li>
+	  <li class="layui-nav-item"><a href="/admin/log.html">用户登陆日志</a></li>
+	  <li class="layui-nav-item"><a href="/admin/sys.html">系统维护</a></li>
+	</ul>
+	
+	<div class="contaiter" style="margin-left: 200px;">
+		<table class="layui-hide" id="test" lay-filter="test"></table>
+	</div>
+	
+	<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  </div>
+	</script>
+	
+	<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	
+	<script type="text/javascript">
+		layui.use('table', function(){
+			var table = layui.table;
+			
+			table.render({
+			    elem: '#test'
+			    ,url:'/admin/findAllArticle.action?t='+Math.random()//数据请求地址
+			    ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+			    ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+			      title: '提示'
+			      ,layEvent: 'LAYTABLE_TIPS'
+			      ,icon: 'layui-icon-tips'
+			    }]
+			    ,title: '用户数据表'
+			    ,cols: [[
+			      {type: 'checkbox', fixed: 'left'}
+			      ,{field:'article_id', title:'ID',  fixed: 'left', unresize: true, sort: true}
+			      ,{field:'article_title', title:'文章标题',  edit: 'text'}
+			      ,{field:'article_content', title:'文章内容',  edit: 'text'}
+			      ,{field:'article_image_url', title:'文章主图',  edit: 'text',templet: function(res){
+			    	  var url = res.article_image_url;
+			          return  "<img src='http://localhost:8888"+url+"' />";
+			      }}
+			      ,{field:'article_publish_time', title:'发布时间',  edit: 'text',templet: function(res){
+			    	  var time = new Date();
+			    	  time.setTime(res.article_publish_time);
+			          return  time.toLocaleString();
+			      }}
+			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+			    ]]
+			    ,page: true
+			  });
+			  
+			  //头工具栏事件
+			  table.on('toolbar(test)', function(obj){
+			    var checkStatus = table.checkStatus(obj.config.id);
+			    switch(obj.event){
+			      case 'getCheckData':
+			        var data = checkStatus.data;
+			        layer.alert(JSON.stringify(data));
+			      break;
+			      case 'getCheckLength':
+			        var data = checkStatus.data;
+			        layer.msg('选中了：'+ data.length + ' 个');
+			      break;
+			      case 'isAll':
+			        layer.msg(checkStatus.isAll ? '全选': '未全选');
+			      break;
+			      
+			      //自定义头工具栏右侧图标 - 提示
+			      case 'LAYTABLE_TIPS':
+			        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+			      break;
+			    };
+			  });
+			  
+			  //监听行工具事件
+			  table.on('tool(test)', function(obj){
+			    var data = obj.data;
+			    //console.log(obj)
+			    if(obj.event === 'del'){
+			      layer.confirm('真的删除行么', function(index){
+			        $.post("/admin/deleteAritcle.action",{"article_id":data.article_id},function(result){
+			        	if(result.code == 0){
+			        		layer.msg("删除成功");
+			        		obj.del();//如果后端删除成功 ，前端删除
+			        	}else{
+			        		layer.msg("删除失败");
+			        	}
+			        })
+			      });
+			    } else if(obj.event == 'edit'){
+			      	location.href = "/admin/editArticle.html?article_id="+data.article_id;
+			    }
+			  });
+		});
+	</script>
+</body>
+</html>

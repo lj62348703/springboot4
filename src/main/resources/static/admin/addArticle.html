@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户管理</title>
+<link rel="stylesheet" href="/layui/css/layui.css">
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+</head>
+<body>
+	<ul class="layui-nav layui-nav-tree  layui-nav-side" lay-filter="test">
+		<li class="layui-nav-item"><a href="/admin/user.html">用户管理</a></li>
+		<li class="layui-nav-item"><a href="/admin/addUser.html">添加用户</a></li>
+		<li class="layui-nav-item  layui-this"><a href="/admin/articleType.html">文章类型管理</a></li>
+		<li class="layui-nav-item"><a href="/admin/addArticleType.html">添加文章类型</a></li>
+		<li class="layui-nav-item"><a href="/admin/article.html">文章管理</a></li>
+		<li class="layui-nav-item"><a href="/admin/addArticle.html">添加文章</a></li>
+		<li class="layui-nav-item"><a href="/admin/log.html">用户登陆日志</a></li>
+		<li class="layui-nav-item"><a href="/admin/sys.html">系统维护</a></li>
+	</ul>
+
+	<div class="contaiter" style="margin-left: 200px;">
+		<form id="frm" class="layui-form" action="" >
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章标题</label>
+				<div class="layui-input-block">
+					<input type="text" name="article_title" id="article_title" required lay-verify="required"
+						placeholder="请输入用户名"  autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章类型</label>
+				<div class="layui-input-inline">
+					 <select name="article_type_id"  lay-verify="required" id="upSelect">
+				        <option value="0">无</option>
+				      </select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章主图</label>
+				<div class="layui-input-block">
+					<button type="button" class="layui-btn" id="test1">
+					  <i class="layui-icon">&#xe67c;</i>上传图片
+					</button>
+					 <img  id="article_image" height="200px">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文章内容</label>
+				<div class="layui-input-block">
+					 <textarea id="content" style="display: none;"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		layui.use(['form','element',"layedit",'upload'], function(){
+			var form = layui.form;
+			var element = layui.element;
+			var layedit = layui.layedit;
+			var upload = layui.upload;
+			element.init();
+			layedit.set({
+	              //暴露layupload参数设置接口 --详细查看layupload参数说明
+	              uploadImage: {
+	                  url: '/admin/uploadImage.action',
+	                  accept: 'image',
+	                  acceptMime: 'image/*',
+	                  exts: 'jpg|png|gif|bmp|jpeg',
+	                  size: '1024'//大小为1M
+	              }
+	              //开发者模式 --默认为false
+	              , devmode: true
+	              //插入代码设置
+	              , codeConfig: {
+	                  hide: true,  //是否显示编码语言选择框
+	                  default: 'java' //hide为true时的默认语言格式
+	              }
+	              , tool: [
+	                  'html', 'code', 'strong', 'italic', 'underline', 'del', 'fontFomatt', 'colorpicker', 'face'
+	                  , '|', 'left', 'center', 'right', '|', 'link', 'unlink', 'image'
+	                  , '|', 'fullScreen'
+	              ]
+	              , height: '90%'
+	          });
+			  var index = layedit.build('content'); //建立编辑器
+			  
+			//执行实例
+			  var uploadInst = upload.render({
+			    elem: '#test1' //绑定元素
+			    ,url: '/admin/uploadImage.action' //上传接口
+			    ,done: function(res){
+			      //上传完毕回调
+			      $("#article_image").attr("src",res.data.src);
+			    }
+			    ,error: function(){
+			      //请求异常回调
+			    }
+			  });
+			
+			//自定义验证规则
+			  form.verify({
+			    username: [
+			      /^[\S]{3,12}$/
+			      ,'用户名必须3到12位，且不能出现空格'
+			    ]
+			  	,password: [
+			      /^[\S]{6,18}$/
+			      ,'密码必须6到18位，且不能出现空格'
+			    ]
+			  	,nick: [
+					/^[\S]{3,12}$/
+					,'昵称必须3到12位，且不能出现空格'
+			    ]
+			  });
+			
+			//监听提交
+			  form.on('submit(demo1)', function(data){
+				 var article_title = $("#article_title").val();
+				 var article_content = layedit.getContent(index)
+				 var article_type_id = $("#upSelect").val();
+				 var article_image_url = $("#article_image").attr("src").replace("http://localhost:8888","");
+			    $.post("/admin/addAritcle.action",
+			    		{"article_title":article_title,"article_content":article_content,
+			    			"article_type_id":article_type_id,"article_image_url":article_image_url}
+			    	,function(result){
+			    		if(result.code != 0){
+			    			layer.msg(result.msg);
+			    		}else{
+			    			location.href = "/admin/article.html"
+			    		}
+			    	});
+			    return false;
+			  });
+			
+			  $.post("/admin/findAllArticleType.action", function(result) {
+					 $(result.list).each(function(){
+						 var option = $("<option value='"+this.article_type_id+"'>"+this.article_type_name+"</option>");
+					 	$("#upSelect").append(option);
+					 	form.render();
+					 });
+					 var select = 'dd[lay-value=' + vue.article.article_type_id + ']';
+					$('#upSelect').siblings("div.layui-form-select").find('dl').find(select).click();
+				})
+			
+		});
+	</script>
+</body>
+</html>
