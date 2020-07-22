@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="/layui/layui.js"></script>
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/vue.min.js"></script>
+	<script type="text/javascript" src="/js/config.js"></script>
 </head>
 <body>
 	<ul class="layui-nav layui-nav-tree  layui-nav-side" lay-filter="test">
@@ -58,12 +59,13 @@
 			      ,{field:'article_content', title:'文章内容',  edit: 'text'}
 			      ,{field:'article_image_url', title:'文章主图',  edit: 'text',templet: function(res){
 			    	  var url = res.article_image_url;
-			          return  "<img src='http://localhost:8888"+url+"' />";
+			          return  "<img src='"+url_prefix+url+"' />";
 			      }}
 			      ,{field:'article_publish_time', title:'发布时间',  edit: 'text',templet: function(res){
-			    	  var time = new Date();
-			    	  time.setTime(res.article_publish_time);
-			          return  time.toLocaleString();
+			    	  //var time = new Date();
+			    	  //time.setTime(res.article_publish_time);
+			          //return  time.toLocaleString();
+							return res.article_publish_time.replace("T"," ");
 			      }}
 			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
 			    ]]

@@ -30,4 +30,9 @@ public interface UserMapper {
 
     @Update("update userinfo set user_name=#{user_name},user_nick=#{user_nick},user_pwd=#{user_pwd} where user_id=#{user_id} ")
     int update(Userinfo userinfo);
+
+    @Update("insert into userinfo(user_name,user_nick,user_pwd) values(#{user_name},#{user_nick},#{user_pwd})")
+    int add(Userinfo userinfo);
+
+
 }

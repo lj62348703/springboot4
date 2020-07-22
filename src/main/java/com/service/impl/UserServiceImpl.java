@@ -7,6 +7,7 @@ import com.mapper.UserMapper;
 import com.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -47,5 +48,11 @@ public class UserServiceImpl implements IUserService {
 
     public int update(Userinfo userinfo){
         return userMapper.update(userinfo);
+    }
+
+    @Transactional
+    public int add(Userinfo userinfo){
+        if(userMapper.login(userinfo.getUser_name()) != null) return -2;
+        return userMapper.add(userinfo);
     }
 }

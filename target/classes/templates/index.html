@@ -11,138 +11,28 @@
     
 
     <!-- css here -->
-    <link rel="stylesheet" href="@{/assets/css/bootstrap.min.css}">
-    <link rel="stylesheet" href="@{/assets/css/owl.carousel.min.css}">
-    <link rel="stylesheet" href="@{/assets/css/owl.theme.default.min.css}">
-    <link rel="stylesheet" href="@{/assets/css/slicknav.min.css}">
-    <link rel="stylesheet" href="@{/assets/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/slicknav.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/animate.min.css}">
     <link rel="stylesheet" href="/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/linebar.min.css">
-    <link rel="stylesheet" href="assets/css/scrolltop.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/slick-theme.css">
-    <link rel="stylesheet" href="assets/css/default.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/linebar.min.css">
+    <link rel="stylesheet" href="/assets/css/scrolltop.css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/slick-theme.css">
+    <link rel="stylesheet" href="/assets/css/default.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
 </head>
 
 <body>
+    <head th:include="nav::nav"></head>
 
 
-    <!--[if lte ie 9]>
-            <p class="browserupgrade">you are using an <strong>outdated</strong> browser. please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- Preloader -->
-    <div class="mayabi-loader">
-        <div class="preloader">
-            <div class="item item-1"></div>
-            <div class="item item-2"></div>
-            <div class="item item-3"></div>
-            <div class="item item-4"></div>
-        </div>
-    </div>
-    <!-- hero area start -->
-    <div id="hero-area" class="hero-area">
-        <div class="header-area">
-            <div class="container">
-                <div class="row">
-                    <!-- logo start -->
-                    <div class="col-md-3">
-                        <div class="header-logo">
-                            <a href="index.html"><img src="assets/img/logo.png" alt="logo" class="img-fluid" /></a>
-                        </div>
-                    </div>
-                    <div class="responsive-menu-wrap"></div>
-                    <!-- nav start -->
-                    <div class="col-md-9">
-                        <div class="mainmenu">
-                            <ul id="navigation">
-                                <li class="current-item"><a href="index.html">home</a></li>
-                                <li><a href="about-1.html">about us</a></li>
-                                <li><a href="#">portfolio <i class="fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="folio-full-width.html"><i class="fa fa-angle-right"></i> portfolio full width</a></li>
-                                        <li><a href="folio-2-col.html"><i class="fa fa-angle-right"></i> portfolio 2 column</a></li>
-                                        <li><a href="folio-3-col.html"><i class="fa fa-angle-right"></i> portfolio 3 column</a></li>
-                                        <li><a href="folio-4-col.html"><i class="fa fa-angle-right"></i> portfolio 4 column</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-right"></i> portfolio masonry </a>
-                                            <ul>
-                                                <li><a href="folio-masonry-1.html"> portfolio masonry 1</a></li>
-                                                <li><a href="folio-masonry-2.html"> portfolio masonry 2</a></li>
-                                                <li><a href="folio-masonry-3.html"> portfolio masonry 3</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">blog <i class="fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="blog-2-col.html"><i class="fa fa-angle-right"></i> blog 2 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-3-col.html"><i class="fa fa-angle-right"></i> blog 3 column</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-angle-right"></i> blog left sidebar</a>
-                                            <ul>
-                                                <li><a href="blog-2-col-left.html">2 column left sidebar</a></li>
-                                                <li><a href="blog-1-col-left.html">1 column left sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-angle-right"></i> blog right sidebar</a>
-                                            <ul>
-                                                <li><a href="blog-2-col-right.html">2 column right sidebar</a></li>
-                                                <li><a href="blog-1-col-right.html">1 column right sidebar</a></li>
-                                            </ul>
-
-                                        </li>
-                                        <li>
-                                            <a href="blog-no-sidebar.html"><i class="fa fa-angle-right"></i> blog no sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-details.html"><i class="fa fa-angle-right"></i> blog details</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-angle-right"></i>blog details sidebar</a>
-                                            <ul>
-                                                <li><a href="blog-details-left-sidebar.html">details left sidebar</a></li>
-                                                <li><a href="blog-details-right-sidebar.html">details right sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">shop <i class="fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="shop-3-col.html"><i class="fa fa-angle-right"></i> shop 3 column</a></li>
-                                        <li><a href="shop-4-col.html"><i class="fa fa-angle-right"></i> shop 4 column</a></li>
-                                        <li><a href="shop-2col-left-sidebar.html"><i class="fa fa-angle-right"></i>shop 2 col left sidebar</a></li>
-                                        <li><a href="shop-2col-right-sidebar.html"><i class="fa fa-angle-right"></i>shop 2 col right sidebar</a></li>
-                                        <li><a href="shop-3col-left-sidebar.html"><i class="fa fa-angle-right"></i>shop 3 col left sidebar</a></li>
-                                        <li><a href="shop-3col-right-sidebar.html"><i class="fa fa-angle-right"></i>shop 3 col right sidebar</a></li>
-                                        <li><a href="product-details.html"><i class="fa fa-angle-right"></i>product details</a></li>
-                                        <li><a href="cart.html"><i class="fa fa-angle-right"></i>cart</a></li>
-                                        <li><a href="login.html"><i class="fa fa-angle-right"></i>login</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">contact us</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="header-search-bar">
-                            <form action="index.html">
-                                <input type="search" placeholder="keywords ...">
-                            </form>
-                        </div>
-                    </div>
-                    <!-- nav end -->
-                </div>
-            </div>
-        </div>
         <!-- slider area start -->
         <div class="slider-area">
             <div class="mayabi-main-slider text-center">
@@ -623,48 +513,29 @@
         </div>
     </div>
     <!-- subscribe form area end -->
-    <!-- footer area start -->
-    <footer>
-        <div class="footer-area sec-p-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copy-right text-center">
-                            <div class="footer-logo mb-30">
-                                <a href="#"><img src="assets/img/logo.png" alt="logo" class="img-fluid" /></a>
-                            </div>
-                            copyright 2019 <a href="http://www.jqueryfuns.com/" title="jqueryfuns">mayabi</a> | all rights reserved | designed by workertm
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer area end -->
-    <!-- scrolltop button -->
-    <div class="material-scrolltop"></div>
+    <head th:include="nav::footer"></head>
 
     <!-- js here -->
-    <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery-ui.js"></script>
-    <script src="assets/js/slicknav.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/magnific-popup.min.js"></script>
-    <script src="assets/js/linebar.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/counterup.min.js"></script>
-    <script src="assets/js/nice-select.min.js"></script>
-    <script src="assets/js/scrolltop.js"></script>
-    <script src="assets/js/ajax-form.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+    <script src="/assets/js/slicknav.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/isotope.pkgd.min.js"></script>
+    <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/js/magnific-popup.min.js"></script>
+    <script src="/assets/js/linebar.js"></script>
+    <script src="/assets/js/waypoints.min.js"></script>
+    <script src="/assets/js/counterup.min.js"></script>
+    <script src="/assets/js/nice-select.min.js"></script>
+    <script src="/assets/js/scrolltop.js"></script>
+    <script src="/assets/js/ajax-form.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/slick.min.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 
 </html>

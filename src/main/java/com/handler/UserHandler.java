@@ -92,4 +92,13 @@ public class UserHandler {
         int num = userServiceImpl.update(info);
         return num == 0 ? ResultUtil.getResult("-1","更新失败") : ResultUtil.getResult("0","更新成功");
     }
+
+    @RequestMapping("/admin/addUser.action")
+    @ResponseBody
+    public HashMap<String,Object> addUser(@Validated(LoginValidate.class) Userinfo info,BindingResult br ){
+        if(br.hasErrors()) return ResultUtil.getResult("-1","请求数据异常");
+        int num = userServiceImpl.add(info);
+        if(num == -2) return ResultUtil.getResult("-2","用户名已经存在");
+        return num == 0 ? ResultUtil.getResult("-1","添加失败") : ResultUtil.getResult("0","添加成功");
+    }
 }

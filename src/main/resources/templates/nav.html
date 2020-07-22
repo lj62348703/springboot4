@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+</head>
+<body>
+<!-- 头部导航公共模块 -->
+<div th:fragment="nav">
+    <!--[if lte ie 9]>
+    <p class="browserupgrade">you are using an <strong>outdated</strong> browser. please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+    <div class="mayabi-loader">
+        <div class="preloader">
+            <div class="item item-1"></div>
+            <div class="item item-2"></div>
+            <div class="item item-3"></div>
+            <div class="item item-4"></div>
+        </div>
+    </div>
+    <!-- header area start -->
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <!-- logo start -->
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <a href="index.html"><img src="/assets/img/logo.png" alt="logo" class="img-fluid" /></a>
+                    </div>
+                </div>
+                <div class="responsive-menu-wrap"></div>
+                <!-- nav start -->
+                <div class="col-md-9">
+                    <div class="mainmenu">
+                        <ul id="navigation">
+                            <li class="current-item"><a href="index.jsp">首页</a></li>
+                            <li><a href="about.html">公司简介   <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="/company/42-1-10.html"><i class="fa fa-angle-right"></i> 公司简介</a></li>
+                                    <li><a href="/company/43-1-10.html"><i class="fa fa-angle-right"></i> 历史轨迹</a></li>
+                                    <li><a href="/company/44-1-10.html"><i class="fa fa-angle-right"></i> 历年展会</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">应用领域 <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 铣削钻孔</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 激光雕刻</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 医疗设备</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 航天技术</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 手机手表 </a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 汽车行业 </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">产品介绍 <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="/article/46-1-10.html"><i class="fa fa-angle-right"></i> 单轴</a> </li>
+                                    <li><a href="/article/47-1-10.html"><i class="fa fa-angle-right"></i> 双轴</a></li>
+                                    <li><a href="/article/48-1-10.html"><i class="fa fa-angle-right"></i> 卧室加工系列</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 油压系列</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 应用辅助</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">产品质量 <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 产品检验设备</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 高端无尘车间</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 产品核心技术</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 专业人才配备</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">服务专区</a>
+                            </li>
+                            <li><a href="contact.html">资料下载  <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 电子型录</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 操作说明</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i> 应用视频</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="header-search-bar">
+                        <form action="index.html">
+                            <input type="search" placeholder="请输入搜索关键词 ...">
+                        </form>
+                    </div>
+                </div>
+                <!-- nav end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="footer">
+    <div class="clearfix"></div>
+    <br><br>
+    <!-- footer area start -->
+    <footer>
+        <div class="footer-area sec-p-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copy-right text-center">
+                            <div class="footer-logo mb-30">
+                                <a href="#"><img src="/assets/img/logo.png" width="200px" alt="logo" class="img-fluid" /></a>
+                            </div>
+                            copyright 2019 <a href="http://www.jqueryfuns.com/" title="jqueryfuns">mayabi</a> | all rights reserved | designed by workertm
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- scrolltop button -->
+    <div class="material-scrolltop"></div>
+</div>
+</body>
+</html>

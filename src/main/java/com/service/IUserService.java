@@ -13,4 +13,6 @@ public interface IUserService {
     Userinfo findById(Integer user_id);
 
     int update(Userinfo userinfo);
+
+    int add(Userinfo userinfo);
 }

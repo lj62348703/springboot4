@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="en-us" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mayabi - Multipurpose Portfolio/Business HTML5 Template</title>
+    <meta name="keywords" content="Corporate Business Shopse HTML5 Css3 Template" />
+    <meta name="description" content="mayabi | Minimal Multipurpose HTML5 Template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- css here -->
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/slicknav.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/animate.min.css}">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/linebar.min.css">
+    <link rel="stylesheet" href="/assets/css/scrolltop.css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/slick-theme.css">
+    <link rel="stylesheet" href="/assets/css/default.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+
+<body>
+<head th:include="nav::nav"></head>
+
+<div class="clearfix"></div>
+<br>
+<!-- breadcroumb area start -->
+<div class="mayabi-breadcroumb blue-bg text-center sec-p-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>世承机具  优秀的品牌源自优良的品质</h2>
+                <h4><a href="index.html">公司简介 </a>/ 公司简介</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcroumb area end -->
+<!-- archive post wedget -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-xs-12">
+            <div class="single-sid-wdg">
+                <h4 class="sid-wdg-title">产品介绍</h4>
+                <ul class="wdg-post-archive">
+                    <li><a href="/article/46-1-10.html"><i class="fa fa-caret-right"></i>单轴</a></li>
+                    <li><a href="/article/47-1-10.html"><i class="fa fa-caret-right"></i>双轴</a></li>
+                    <li><a href="/article/48-1-10.html"><i class="fa fa-caret-right"></i>卧式</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9  col-xs-12">
+            <div class="blog-details">
+                <div class="single-blog-content">
+                    <blockquote class="blockquote">
+                        <p>内容标题</p>
+                    </blockquote>
+                    <div class="row" th:each="article:${pageInfo.list}">
+                        <div class="blog-img-ctg" >
+                            <div class="col-md-12"  style="float:left;">
+                                <h3 th:text="${article.article_title}"></h3>
+                            </div>
+
+                            <div class="col-md-6" style="float:left;">
+                                <img th:src="${imagePrefix}+${article.article_image_url}"/>
+                            </div>
+                            <div class="col-md-4"  style="float:right;">
+                                <div th:value="${article.article_publish_time}" ></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+
+                </div>
+            </div>
+            <ul class="pagination">
+                <li><a th:href="'/article/'+(${article_type_id}+'-'+1+'-'+${pageInfo.pageSize})+'.html'">首页</a></li>
+                <li><a th:href="'/article/'+(${article_type_id}+'-'+${pageInfo.pageNum == 1 ? 1 : (pageInfo.pageNum -1)}+'-'+${pageInfo.pageSize})+'.html'">上一页</a></li>
+                <li><a th:href="'/article/'+(${article_type_id}+'-'+${pageInfo.pageNum == pageInfo.pages ? pageInfo.pages : pageInfo.pageNum + 1}+'-'+${pageInfo.pageSize})+'.html'">下一页</a></li>
+                <li><a th:href="'/article/'+(${article_type_id}+'-'+${pageInfo.pages}+'-'+${pageInfo.pageSize})+'.html'">尾页</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- subscribe form area end -->
+<head th:include="nav::footer"></head>
+
+<!-- js here -->
+<script src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery-ui.js"></script>
+<script src="/assets/js/slicknav.min.js"></script>
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/isotope.pkgd.min.js"></script>
+<script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/js/magnific-popup.min.js"></script>
+<script src="/assets/js/linebar.js"></script>
+<script src="/assets/js/waypoints.min.js"></script>
+<script src="/assets/js/counterup.min.js"></script>
+<script src="/assets/js/nice-select.min.js"></script>
+<script src="/assets/js/scrolltop.js"></script>
+<script src="/assets/js/ajax-form.js"></script>
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+
+</html>

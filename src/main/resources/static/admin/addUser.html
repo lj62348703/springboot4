@@ -21,7 +21,7 @@
 	</ul>
 
 	<div class="contaiter" style="margin-left: 200px;">
-		<form id="frm" class="layui-form" action="" >
+		<form id="frm" class="layui-form"  >
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-block">
@@ -80,6 +80,9 @@
 			    $.post("/admin/addUser.action",
 			    		{"user_name":user_name,"user_pwd":user_pwd,"user_nick":user_nick}
 			    	,function(result){
+			    		alert(result);
+							alert(result.msg);
+							alert(result.code);
 			    		if(result.code != 0){
 			    			layer.msg(result.msg);
 			    		}else{
